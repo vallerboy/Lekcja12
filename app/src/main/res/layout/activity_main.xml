@@ -81,4 +81,13 @@
         android:layout_marginTop="35dp"
         android:layout_alignLeft="@+id/buttonPlus"
         android:layout_alignStart="@+id/buttonPlus" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Akcja test"
+        android:id="@+id/buttonAction"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/buttonAddBook"
+        android:layout_alignEnd="@+id/buttonAddBook" />
 </RelativeLayout>

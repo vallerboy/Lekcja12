@@ -87,6 +87,11 @@ public class MainActivity extends AppCompatActivity  {
          Log.e("asd", counter + "");
     }
 
+    @OnClick(R.id.buttonAction)
+    public void action(){
+        Toast.makeText(this, "Ilość książek w bazie: " + database.getBooksNumber(), Toast.LENGTH_LONG).show();
+    }
+
 
 
 

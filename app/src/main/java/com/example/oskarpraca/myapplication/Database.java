@@ -2,6 +2,7 @@ package com.example.oskarpraca.myapplication;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -36,5 +37,12 @@ public class Database  extends SQLiteOpenHelper{
         values.put("pageCount", book.getPageCount());
 
         database.insertOrThrow("book", null, values);
+    }
+
+    public int getBooksNumber(){
+        SQLiteDatabase database = getReadableDatabase();
+        String[] columns = {"name, author, category, pageCount"};
+        Cursor cursor = database.query("book", columns, null, null, null, null, null);
+        return cursor.getCount();
     }
 }

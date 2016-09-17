@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity  {
         database = new Database(this);
         counter = 0;
 
-        listView.setAdapter(new BookAdapter(database.getAllBooks(), this));
+        listView.setAdapter(new BookAdapter(database.getAllBooks(), this, database));
     }
 
 
@@ -84,6 +84,11 @@ public class MainActivity extends AppCompatActivity  {
     @OnClick(R.id.buttonAddBook)
     public void buttonAddBook(){
         database.addBook(new Book(name.getText().toString(), author.getText().toString(), category.getText().toString(), counter));
+
+        listView.deferNotifyDataSetChanged();
+        listView.invalidateViews();
+
+
         Toast.makeText(this, "Dodałeś książkę", Toast.LENGTH_LONG).show();
     }
 
@@ -93,6 +98,9 @@ public class MainActivity extends AppCompatActivity  {
          Log.e("asd", counter + "");
     }
 
+    public ListView getListView(){
+        return listView;
+    }
 
 
 

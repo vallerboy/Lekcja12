@@ -63,4 +63,10 @@ public class Database  extends SQLiteOpenHelper{
 
         return ourBooks;
     }
+
+    public void deleteBook(String name){
+        SQLiteDatabase database = getWritableDatabase();
+        String[] args = {name};
+        database.delete("book", "name=?", args);
+    }
 }

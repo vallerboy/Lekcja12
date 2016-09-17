@@ -1,17 +1,20 @@
 package com.example.oskarpraca.myapplication;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by OskarPraca on 2016-09-17.
@@ -19,14 +22,15 @@ import butterknife.ButterKnife;
 public class BookAdapter extends BaseAdapter {
 
     private  ArrayList<Book> ourBooks;
-    private Context context;
+    private  MainActivity context;
+    private  Database database;
 
     private LayoutInflater inflater;
 
-    public BookAdapter(ArrayList<Book> books, Context con) {
+    public BookAdapter(ArrayList<Book> books, MainActivity con, Database database) {
         ourBooks = books;
         context = con;
-
+        this.database = database;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
     }
@@ -48,7 +52,7 @@ public class BookAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View view, ViewGroup parent) {
+    public View getView(final int position, View view, ViewGroup parent) {
 
         ViewHolder holder;
 
@@ -65,6 +69,18 @@ public class BookAdapter extends BaseAdapter {
         holder.author.setText(ourBooks.get(position).getAuthor());
 
 
+        holder.delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                database.deleteBook(ourBooks.get(position).getName());
+                notifyDataSetInvalidated();
+                notifyDataSetChanged();
+                context.getListView().invalidateViews();
+
+            }
+        });
+
+
         return view;
     }
 
@@ -73,8 +89,13 @@ public class BookAdapter extends BaseAdapter {
         public TextView name;
         @BindView(R.id.textAuthor)
         public TextView author;
+         @BindView(R.id.deleteButton)
+         public Button delete;
 
-        public ViewHolder(View v){
+
+
+
+         public ViewHolder(View v){
             ButterKnife.bind(this, v);
         }
     }

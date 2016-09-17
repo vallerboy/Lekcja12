@@ -73,10 +73,7 @@ public class BookAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 database.deleteBook(ourBooks.get(position).getName());
-                notifyDataSetInvalidated();
-                notifyDataSetChanged();
-                context.getListView().invalidateViews();
-
+                context.resetAdapeter();
             }
         });
 

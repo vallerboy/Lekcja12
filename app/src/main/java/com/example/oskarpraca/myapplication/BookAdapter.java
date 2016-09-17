@@ -6,8 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by OskarPraca on 2016-09-17.
@@ -45,6 +49,20 @@ public class BookAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+
+
+
         return null;
+    }
+
+    private static class ViewHolder{
+     @BindView(R.id.textName)
+        TextView name;
+        @BindView(R.id.textAuthor)
+        TextView author;
+
+        public ViewHolder(View v){
+            ButterKnife.bind(this, v);
+        }
     }
 }

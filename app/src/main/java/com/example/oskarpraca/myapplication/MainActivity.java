@@ -16,6 +16,7 @@ import android.os.Bundle;
 import android.text.format.Time;
 import android.util.Log;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,6 +45,9 @@ public class MainActivity extends AppCompatActivity  {
     @BindView(R.id.textCounter)
     TextView counterView;
 
+    @BindView(R.id.listView)
+    ListView listView;
+
     private int counter;
 
 
@@ -56,6 +60,8 @@ public class MainActivity extends AppCompatActivity  {
 
         database = new Database(this);
         counter = 0;
+
+        listView.setAdapter(new BookAdapter(database.getAllBooks(), this));
     }
 
 
@@ -85,11 +91,6 @@ public class MainActivity extends AppCompatActivity  {
     private void refreshTextView(){
          counterView.setText(counter + "");
          Log.e("asd", counter + "");
-    }
-
-    @OnClick(R.id.buttonAction)
-    public void action(){
-        Toast.makeText(this, "Ilość książek w bazie: " + database.getBooksNumber(), Toast.LENGTH_LONG).show();
     }
 
 

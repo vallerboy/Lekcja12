@@ -48,18 +48,31 @@ public class BookAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View view, ViewGroup parent) {
+
+        ViewHolder holder;
+
+          if(view != null){
+              holder = (ViewHolder) view.getTag();
+          }else{
+              view = inflater.inflate(R.layout.book_list, parent, false);
+              holder = new ViewHolder(view);
+              view.setTag(holder);
+          }
 
 
+        holder.name.setText(ourBooks.get(position).getName());
+        holder.author.setText(ourBooks.get(position).getAuthor());
 
-        return null;
+
+        return view;
     }
 
-    private static class ViewHolder{
-     @BindView(R.id.textName)
-        TextView name;
+     static class ViewHolder{
+        @BindView(R.id.textName)
+        public TextView name;
         @BindView(R.id.textAuthor)
-        TextView author;
+        public TextView author;
 
         public ViewHolder(View v){
             ButterKnife.bind(this, v);

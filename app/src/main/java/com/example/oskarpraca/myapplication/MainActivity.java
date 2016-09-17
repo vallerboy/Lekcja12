@@ -15,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.format.Time;
 import android.util.Log;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -26,6 +27,7 @@ import java.util.Date;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnItemClick;
 
 
 public class MainActivity extends AppCompatActivity  {
@@ -104,6 +106,10 @@ public class MainActivity extends AppCompatActivity  {
         listView.setAdapter(new BookAdapter(database.getAllBooks(), this, database));
     }
 
+    @OnItemClick(R.id.listView)
+    public void onItemClick(AdapterView<?> adapter, int position){
+        Log.e("log", position + "");
+    }
 
 
 

@@ -13,6 +13,8 @@
         android:text="Nazwa książki"
         android:textSize="35sp"
         android:id="@+id/textName"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         android:textColor="@color/bookName"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
@@ -25,6 +27,8 @@
         android:textSize="20sp"
         android:textColor="@color/bookAuthor"
         android:id="@+id/textAuthor"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         android:layout_below="@+id/textName"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
@@ -34,6 +38,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="-"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         android:id="@+id/deleteButton"
         android:layout_below="@+id/textName"
         android:layout_centerHorizontal="true" />

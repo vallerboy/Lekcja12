@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity  {
     }
 
 
-    @OnClick(R.id.buttonAdd)
+    @OnClick(R.id.buttonPlus)
     public void buttonAdd() {
         counter += 10;
         refreshTextView();
@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity  {
         refreshTextView();
     }
 
-    @OnClick(R.id.buttonAdd)
+    @OnClick(R.id.buttonAddBook)
     public void buttonAddBook(){
         database.addBook(new Book(name.getText().toString(), author.getText().toString(), category.getText().toString(), counter));
         Toast.makeText(this, "Dodałeś książkę", Toast.LENGTH_LONG).show();
@@ -84,6 +84,7 @@ public class MainActivity extends AppCompatActivity  {
 
     private void refreshTextView(){
          counterView.setText(counter + "");
+         Log.e("asd", counter + "");
     }
 
 

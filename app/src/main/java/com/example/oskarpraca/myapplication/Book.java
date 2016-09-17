@@ -8,7 +8,14 @@ public class Book {
     private String name, author, category;
     private int pageCount;
 
-       public Book() {}
+    public Book() {}
+
+    public Book(String name, String author, String category, int pageCount) {
+        this.name = name;
+        this.author = author;
+        this.category = category;
+        this.pageCount = pageCount;
+    }
 
     public String getName() {
         return name;

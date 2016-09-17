@@ -1,6 +1,7 @@
 package com.example.oskarpraca.myapplication;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -16,20 +17,25 @@ public class BookAdapter extends BaseAdapter {
     private  ArrayList<Book> ourBooks;
     private Context context;
 
-    public BookAdapter(ArrayList<Book> books, Context con){
+    private LayoutInflater inflater;
+
+    public BookAdapter(ArrayList<Book> books, Context con) {
         ourBooks = books;
         context = con;
+
+        inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
     }
 
 
     @Override
     public int getCount() {
-        return 0;
+        return ourBooks.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return null;
+        return ourBooks.get(position);
     }
 
     @Override

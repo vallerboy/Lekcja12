@@ -11,7 +11,9 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Nazwa książki"
+        android:textSize="35sp"
         android:id="@+id/textName"
+        android:textColor="@color/bookName"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
@@ -20,6 +22,8 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Autor"
+        android:textSize="20sp"
+        android:textColor="@color/bookAuthor"
         android:id="@+id/textAuthor"
         android:layout_below="@+id/textName"
         android:layout_alignParentRight="true"

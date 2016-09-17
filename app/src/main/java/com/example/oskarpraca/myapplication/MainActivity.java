@@ -1,6 +1,7 @@
 package com.example.oskarpraca.myapplication;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Criteria;
 import android.location.Location;
@@ -14,23 +15,24 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity  {
 
 
-    @BindView(R.id.button)
-    Button button;
+
 
     @Override
     public void onCreate(Bundle savedInstance){
         super.onCreate(savedInstance);
-
+        setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
     }
 
-    @OnClick(R.id.button)
+    @OnClick(R.id.buttonClick)
     public void onClick(View v){
-
+        startService(new Intent(getBaseContext(), EasyService.class));
     }
 
 }

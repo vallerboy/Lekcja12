@@ -22,18 +22,18 @@ public class EasyService extends IntentService {
     protected void onHandleIntent(Intent intent) {
         for (int i = 0; i <= 10; i++) {
             try {
-                Thread.sleep(500);
+                Thread.sleep(5000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        }
 
-        handler.post(new Runnable() {
-            @Override
-            public void run() {
-                Toast.makeText(getApplicationContext(), "Powstałem z serwisu", Toast.LENGTH_LONG).show();
-            }
-        });
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    Toast.makeText(getApplicationContext(), "Powstałem z serwisu", Toast.LENGTH_LONG).show();
+                }
+            });
+        }
 
     }
 }

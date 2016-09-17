@@ -96,9 +96,6 @@ public class MainActivity extends AppCompatActivity  {
          Log.e("asd", counter + "");
     }
 
-    public ListView getListView(){
-        return listView;
-    }
 
     public void resetAdapeter(){
         listView.deferNotifyDataSetChanged();

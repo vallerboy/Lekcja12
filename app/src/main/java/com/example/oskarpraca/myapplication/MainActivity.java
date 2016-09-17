@@ -1,86 +1,61 @@
 package com.example.oskarpraca.myapplication;
 
 import android.Manifest;
-import android.content.ComponentName;
 import android.content.Context;
-import android.content.Intent;
-import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
-import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.os.IBinder;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+import android.util.Log;
 import android.widget.Toast;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
-
-public class MainActivity extends AppCompatActivity  {
 
 
+public class MainActivity extends AppCompatActivity implements LocationListener {
 
-    private boolean isConnect;
-    private HardService hardService;
+
+    private LocationManager locationManager;
 
     @Override
-    public void onCreate(Bundle savedInstance){
+    public void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            Log.e("GPS", "Brkauje permission");
+            return;
+        }
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 500, 0.1f, this);
     }
 
-    @OnClick(R.id.buttonClick)
-    public void onClick(View v){
-        startService(new Intent(getBaseContext(), EasyService.class));
-      //  stopService(new Intent(getBaseContext(), EasyService.class));
-    }
 
-    @OnClick(R.id.button)
-    public void onClickHard(){
-      if(isConnect) {
-          hardService.createToast();
-      }else{
-
-      }
+    @Override
+    public void onLocationChanged(Location location) {
+        Toast.makeText(this, "Zmieniono lokaliacje", Toast.LENGTH_LONG).show();
+        Log.e("GPS", "Zmieniono lokalalizacje");
     }
 
     @Override
-    public void onStart(){
-        super.onStart();
-        bindService(new Intent(this, HardService.class), mConnection, Context.BIND_AUTO_CREATE);
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+
     }
 
     @Override
-    public void onStop(){
-        super.onStop();
-        if(isConnect) {
-            unbindService(mConnection);
-            isConnect = false;
-        }
+    public void onProviderEnabled(String provider) {
+        Toast.makeText(this, "Uruchomiono GPS", Toast.LENGTH_LONG).show();
+        Log.e("GPS", "Uruchomiono GPS");
     }
 
+    @Override
+    public void onProviderDisabled(String provider) {
 
-
-    private ServiceConnection mConnection = new ServiceConnection() {
-        @Override
-        public void onServiceConnected(ComponentName name, IBinder service) {
-            HardService.LocalBinder binder = (HardService.LocalBinder) service;
-            hardService = binder.getService();
-            isConnect = true;
-
-        }
-
-        @Override
-        public void onServiceDisconnected(ComponentName name) {
-           isConnect = false;
-        }
-    };
-
+    }
 }

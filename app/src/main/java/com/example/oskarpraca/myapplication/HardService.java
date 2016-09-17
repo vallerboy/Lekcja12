@@ -28,6 +28,10 @@ public class HardService extends Service {
         return mBinder;
     }
 
+
+
+    public void sometingElse(){ }
+
     // metoda zapewniona
     public void createToast() {
        handler.post(new Runnable() {

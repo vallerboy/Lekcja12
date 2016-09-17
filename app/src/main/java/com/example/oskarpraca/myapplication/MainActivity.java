@@ -46,6 +46,8 @@ public class MainActivity extends AppCompatActivity  {
     public void onClickHard(){
       if(isConnect) {
           hardService.createToast();
+      }else{
+
       }
     }
 

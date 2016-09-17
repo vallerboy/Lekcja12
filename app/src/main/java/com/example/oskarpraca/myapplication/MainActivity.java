@@ -2,6 +2,7 @@ package com.example.oskarpraca.myapplication;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.icu.util.Calendar;
 import android.icu.util.TimeUnit;
@@ -22,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import butterknife.BindView;
@@ -105,7 +107,16 @@ public class MainActivity extends AppCompatActivity  {
 
     @OnItemClick(R.id.listView)
     public void onItemClick(AdapterView<?> adapter, int position){
-        Log.e("log", position + "");
+        Intent intent = new Intent(this, BookActivity.class);
+
+        ArrayList<Book> books = database.getAllBooks();
+
+        intent.putExtra("name", books.get(position).getName());
+        intent.putExtra("category", books.get(position).getCategory());
+        intent.putExtra("author", books.get(position).getAuthor());
+        intent.putExtra("pageCount", books.get(position).getPageCount());
+
+        startActivity(intent);
     }
 
 

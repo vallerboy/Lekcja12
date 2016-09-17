@@ -6,7 +6,7 @@ import android.os.Bundle;
 public class BookActivity extends AppCompatActivity {
 
     private String name, category, author;
-    private Integer pageCount;
+    private int pageCount;
 
 
     @Override

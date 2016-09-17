@@ -51,6 +51,10 @@ public class BookAdapter extends BaseAdapter {
         return 0;
     }
 
+    public Book getBook(int id){
+        return ourBooks.get(id);
+    }
+
     @Override
     public View getView(final int position, View view, ViewGroup parent) {
 

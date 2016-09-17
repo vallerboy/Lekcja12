@@ -28,6 +28,7 @@ public class HardService extends Service {
         return mBinder;
     }
 
+    // metoda zapewniona
     public void createToast() {
        handler.post(new Runnable() {
            @Override

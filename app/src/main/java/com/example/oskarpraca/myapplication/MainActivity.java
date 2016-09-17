@@ -33,6 +33,12 @@ public class MainActivity extends AppCompatActivity  {
     @OnClick(R.id.buttonClick)
     public void onClick(View v){
         startService(new Intent(getBaseContext(), EasyService.class));
+      //  stopService(new Intent(getBaseContext(), EasyService.class));
+    }
+
+    @OnClick(R.id.button)
+    public void onClickHard(){
+
     }
 
 }

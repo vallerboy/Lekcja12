@@ -12,10 +12,19 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Odpal serivce"
+        android:text="Odpal easyService"
         android:id="@+id/buttonClick"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Odpal hardService"
+        android:id="@+id/button"
+        android:layout_below="@+id/buttonClick"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp" />
 
 
 </RelativeLayout>

@@ -3,6 +3,7 @@ package com.example.oskarpraca.myapplication;
 import android.app.IntentService;
 import android.content.Intent;
 import android.os.Handler;
+import android.util.Log;
 import android.widget.Toast;
 
 /**
@@ -26,11 +27,12 @@ public class EasyService extends IntentService {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
+            //stopSelf();
             handler.post(new Runnable() {
                 @Override
                 public void run() {
                     Toast.makeText(getApplicationContext(), "Powstałem z serwisu", Toast.LENGTH_LONG).show();
+                    Log.e("test", "test");
                 }
             });
         }

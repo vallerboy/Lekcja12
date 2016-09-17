@@ -5,6 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.ArrayAdapter;
+
+import java.util.ArrayList;
 
 /**
  * Created by OskarPraca on 2016-09-17.
@@ -41,8 +44,23 @@ public class Database  extends SQLiteOpenHelper{
 
     public int getBooksNumber(){
         SQLiteDatabase database = getReadableDatabase();
+     //   String[] columns = {"name, author, category, pageCount"};
+        Cursor cursor = database.query("book", null, null, null, null, null, null);
+        return cursor.getCount();
+    }
+
+
+    public ArrayList<Book> getAllBooks() {
+        SQLiteDatabase database = getReadableDatabase();
         String[] columns = {"name, author, category, pageCount"};
         Cursor cursor = database.query("book", columns, null, null, null, null, null);
-        return cursor.getCount();
+
+        ArrayList<Book> ourBooks =  new ArrayList<>();
+
+         while (cursor.moveToNext()){
+             ourBooks.add(new Book(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getInt(3)));
+         }
+
+        return ourBooks;
     }
 }
